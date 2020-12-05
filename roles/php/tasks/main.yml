@@ -67,3 +67,8 @@
   args:
     chdir: /var/www/html/dev
     creates: /var/www/html/dev/web
+
+- file:
+    path: /var/www/html/{{ directory }}
+    state: directory
+    mode: 777
