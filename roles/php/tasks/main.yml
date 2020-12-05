@@ -85,3 +85,4 @@
     path: /var/www/html/{{ directory }}
     state: directory
     mode: 777
+    become: yes
