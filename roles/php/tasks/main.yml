@@ -68,7 +68,7 @@
 
 ## ディレクトリを作成
 - name: mkdir {{ directory }}
-  file:
+  file: 
     path: /var/www/html/{{ directory }}
     state: directory
 
@@ -84,5 +84,5 @@
   file:
     path: /var/www/html/{{ directory }}
     state: directory
-    mode: 777
+    mode: 0777
     become: yes
