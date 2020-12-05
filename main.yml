@@ -1,7 +1,7 @@
 - name: web server
   hosts: localhost
   vars_files:
-    ./vars/variables.yml
+    .roles/vars/variables.yml
   become: yes
   roles:
     - git
