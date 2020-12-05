@@ -31,17 +31,16 @@
     dest: /etc/php.ini
 
 ## php-fpmの設定をコピー
-- template:
-    src: ./templates/www.conf
-    dest: /etc/php-fpm.d/www.conf
+- name: php-fpm
+  copy: src=./templates/www.conf dest=/etc/php-fpm.d/www.conf
 
 ## sockファイルを作成
+- name: sock
+    copy: src=./templates/php-fpm.sock dest=/var/run/php-fpm/php-fpm.sock
 - file:
     path: /var/run/php-fpm/php-fpm.sock
     owner: nginx
     group: nginx
-    state: touch
-    become: yes
 
 ## php-fpm再起動
 - name: php-fpm 再起動
