@@ -66,6 +66,8 @@
     - mv composer.phar /usr/local/bin/composer
     - /usr/local/bin/composer global require laravel/installer
 
+## ディレクトリを作成
+
 ## laravelの新規プロジェクト作成
 - name: create laravel-project
   shell: /usr/local/bin/composer create-project "laravel/laravel=5.6.*" web
@@ -74,7 +76,7 @@
     creates: /var/www/html/dev/web
 
 ## ディレクトリの権限を変更
-- name: change permission
+- name: mkdir {{ directory }} & change permission
   file:
     path: /var/www/html/{{ directory }}
     state: directory
