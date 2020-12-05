@@ -66,12 +66,11 @@
     - mv composer.phar /usr/local/bin/composer
     - /usr/local/bin/composer global require laravel/installer
 
-## ディレクトリを作成 & ディレクトリの権限を変更
-- name: mkdir {{ directory }} & change permission
+## ディレクトリを作成
+- name: mkdir {{ directory }}
   file:
     path: /var/www/html/{{ directory }}
     state: directory
-    mode: 777
 
 ## laravelの新規プロジェクト作成
 - name: create laravel-project
@@ -79,3 +78,10 @@
   args:
     chdir: /var/www/html/dev
     creates: /var/www/html/dev/web
+
+## ディレクトリの権限を変更
+- name: hange permission
+  file:
+    path: /var/www/html/{{ directory }}
+    state: directory
+    mode: 777
