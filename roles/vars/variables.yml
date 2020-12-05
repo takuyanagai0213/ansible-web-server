@@ -1,6 +1,5 @@
 # nginx
-vars:
-  directory: dev
-  server_name: example.com
-  root_path: "/var/www/html/{{ directory }}/web/public"
-  domain: example.com
+directory: dev
+server_name: example.com
+root_path: "/var/www/html/{{ directory }}/web/public"
+domain: example.com
