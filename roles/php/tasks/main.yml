@@ -85,4 +85,4 @@
     path: /var/www/html/{{ directory }}
     state: directory
     mode: 0777
-    recruce: yes
+    recurce: yes
