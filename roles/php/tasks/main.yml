@@ -1,17 +1,17 @@
 ## epeal-release追加
-- name: install epel
+- name: yum install epel
   yum:
     name: epel-release
     state: installed
 
 ## remiリポジトリを追加
-- name: install remi
+- name: yum install remi
   yum:
     name: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
     state: installed
 
 ## php関連のパッケージをインストール
-- name: install php
+- name: yum install php
   yum: name={{ item }} enablerepo=remi,remi-php73 state=installed
   with_items:
     - php
@@ -26,29 +26,33 @@
     - php-zip
 
 ## php.iniをサーバーにコピー
-- template:
+- name: copy php.ini
+  template:
     src: ./templates/php.ini
     dest: /etc/php.ini
 
 ## php-fpmの設定をコピー
-- name: php-fpm
+- name: copy www.conf
   copy: src=./templates/www.conf dest=/etc/php-fpm.d/www.conf
 
-## php-fpm起動
-- name: restart php-fpm
+## php-fpm再起動
+- name: systemctl restart php-fpm
   service: name=php-fpm state=restarted
   become: yes
-## sockファイルを作成
-- name: create php-fpm.sock
+
+## php-fpm.sockファイルを作成
+- name: copy php-fpm.sock
   copy: src=./templates/php-fpm.sock dest=/var/run/php-fpm/php-fpm.sock
 
-- file:
+## 所有者権限を変更
+- name: chanch owner
+  file:
     path: /var/run/php-fpm/php-fpm.sock
     owner: nginx
     group: nginx
 
 ## php-fpm再起動
-- name: php-fpm 再起動
+- name: systemctl restart php-fpm
   service: name=php-fpm state=restarted
   become: yes
 
@@ -62,13 +66,16 @@
     - mv composer.phar /usr/local/bin/composer
     - /usr/local/bin/composer global require laravel/installer
 
-- name: Laravel プロジェクト配置
+## laravelの新規プロジェクト作成
+- name: create laravel-project
   shell: /usr/local/bin/composer create-project "laravel/laravel=5.6.*" web
   args:
     chdir: /var/www/html/dev
     creates: /var/www/html/dev/web
 
-- file:
+## ディレクトリの権限を変更
+- name: change permission
+  file:
     path: /var/www/html/{{ directory }}
     state: directory
     mode: 777

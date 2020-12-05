@@ -1,2 +1,3 @@
+## gitをインストール
 - name: install git
   yum: name=git state=installed
