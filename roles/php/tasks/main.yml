@@ -27,7 +27,7 @@
 
 ## php.iniをサーバーにコピー
 - template:
-    src: ../template/php.ini
+    src: ./templates/php.ini
     dest: /etc/php.ini
 
 ## composerをインストール
