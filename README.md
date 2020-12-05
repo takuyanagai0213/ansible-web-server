@@ -1,5 +1,9 @@
 # centos7 ansible 導入手順
 ### インストール
+localhostで実行する時はgitをインストール
+
+`yum install git`
+
 `yum install ansible`
 
 ### 確認
