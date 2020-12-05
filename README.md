@@ -10,6 +10,7 @@
 `ansible-playbook main.yml`
 
 ## 実行内容
-`php` インストール
-`git` インストール
-`nginx` インストール
+`php` セットアップル<br>
+`composer` のセットアップ<br>
+`git` インストール<br>
+`nginx` セットアップ<br>
