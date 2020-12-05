@@ -1,12 +1,16 @@
+## epeal-release追加
 - name: install epel
   yum:
     name: epel-release
     state: installed
 
+## remiリポジトリを追加
 - name: install remi
   yum:
     name: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
     state: installed
+
+## php関連のパッケージをインストール
 - name: install php
   yum: name={{ item }} enablerepo=remi,remi-php73 state=installed
   with_items:
@@ -20,3 +24,8 @@
     - php-pdo
     - php-xml
     - php-zip
+
+## php.iniをサーバーにコピー
+- template:
+    src: ../template/php.ini
+    dest: /etc/php.ini
