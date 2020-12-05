@@ -1,4 +1,7 @@
-# centos7 ansible 導入手順
+# 概要
+webサーバーの環境構築に必要な作業をパッケージ化しました。
+
+## centos7 ansible 導入手順
 ### インストール
 localhostで実行する時はgitをインストール
 
