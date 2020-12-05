@@ -30,6 +30,24 @@
     src: ./templates/php.ini
     dest: /etc/php.ini
 
+## php-fpmの設定をコピー
+- template:
+    src: ./templates/www.conf
+    dest: /etc/php-fpm.d/www.conf
+
+## sockファイルを作成
+- file:
+    path: /var/run/php-fpm/php-fpm.sock
+    owner: nginx
+    group: nginx
+    state: touch
+    become: yes
+
+## php-fpm再起動
+- name: php-fpm 再起動
+  service: name=php-fpm state=restarted
+  become: yes
+
 ## composerをインストール
 - name: install composer
   command: "{{ item }}"
