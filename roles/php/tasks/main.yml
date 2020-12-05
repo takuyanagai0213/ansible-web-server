@@ -62,13 +62,8 @@
     - mv composer.phar /usr/local/bin/composer
     - /usr/local/bin/composer global require laravel/installer
 
-- name: Laravel 5.6
-  shell: composer global require "laravel/installer"
-  args:
-    creates: /root/.config/.composer/vendor/bin/laravel
-
 - name: Laravel プロジェクト配置
-  shell: composer create-project "laravel/laravel=5.6.*" testblog
+  shell: composer create-project "laravel/laravel=5.6.*" web
   args:
     chdir: /var/www/html
     creates: /var/www/html/web
