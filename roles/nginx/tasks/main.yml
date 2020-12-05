@@ -1,3 +1,6 @@
+vars_files:
+  ./vars/variables.yml
+
 - name: Nginxインストール
   yum: name=nginx state=latest
 - name: Nginx起動
