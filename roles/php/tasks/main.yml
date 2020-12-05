@@ -24,6 +24,7 @@
     - php-pdo
     - php-xml
     - php-zip
+    - php73-php-pecl-mongodb
 
 ## php.iniをサーバーにコピー
 - name: copy php.ini
