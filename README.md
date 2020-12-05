@@ -4,6 +4,8 @@ localhostで実行する時はgitをインストール
 
 `yum install git`
 
+`yum install epel-release`
+
 `yum install ansible`
 
 ### 確認
