@@ -80,8 +80,9 @@
     creates: /var/www/html/dev/web
 
 ## ディレクトリの権限を変更
-- name: hange permission
+- name: change permission
   file:
     path: /var/www/html/{{ directory }}
     state: directory
     mode: 0777
+    recruce: yes
