@@ -6,8 +6,12 @@
 `ansible --version`
 
 # ansible 使い方
-
-`ansible-playbook main.yml`
+```
+# リポジトリをクローン
+git clone ssh://git@165.76.148.171:8890/InfrastructureAsCode/ansible-project.git
+# 下記コマンドを実行すると、ジョブが開始される。
+cd ansible-project
+ansible-playbook main.yml
 
 ## 実行内容
 `php` セットアップル<br>
