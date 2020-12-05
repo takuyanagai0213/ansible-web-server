@@ -63,7 +63,7 @@
     - /usr/local/bin/composer global require laravel/installer
 
 - name: Laravel プロジェクト配置
-  shell: composer create-project "laravel/laravel=5.6.*" web
+  shell: /usr/local/bin/composer create-project "laravel/laravel=5.6.*" web
   args:
     chdir: /var/www/html
     creates: /var/www/html/web
