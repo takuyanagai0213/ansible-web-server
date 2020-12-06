@@ -37,8 +37,29 @@ laravelのHello Worldまで行います。<br>
 `./roles/vars/variables.yml`
 ```
 # nginxのdefault.confの各設定に適用される
-directory: dev
-server_name: example.com
-root_path: "/var/www/html/{{ directory }}/web/public"
-domain: example.com
+# nginx
+domain: 
+  1: example.com
+  2: example.com
+  3: example.com
+  4: example.com
+  5: example.com
+server_name: 
+  1: example.com
+  2: example.com
+  3: example.com
+  4: example.com
+  5: example.com
+root_path: 
+  1: "/var/www/html/{{ list_of_directory[1] }}/web/public"
+  2: "/var/www/html/{{ list_of_directory[2] }}/web/public"
+  3: "/var/www/html/{{ list_of_directory[3] }}/web/public"
+  4: "/var/www/html/{{ list_of_directory[4] }}/web/public"
+  5: "/var/www/html/{{ list_of_directory[5] }}/web/public"
+list_of_directory: 
+  1: dev01
+  2: dev02
+  3: dev03
+  4: dev04
+  5: dev05
 ```
