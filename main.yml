@@ -4,7 +4,6 @@
     ./roles/vars/variables.yml
   become: yes
   roles:
-    - common
     - git
     - nginx
     - php
