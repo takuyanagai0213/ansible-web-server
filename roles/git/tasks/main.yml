@@ -19,18 +19,25 @@
       get_url: url=https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.29.2.tar.gz dest=/opt/git-2.29.2.tar.gz
 
     - name: untar git-latest.tar.gz
-      command: tar -xzf /opt/git-2.29.2.tar.gz -C /opt
+      command: tar -xzf /opt/git-2.29.2.tar.gz -C /usr/local/src
       become: yes
 
     - name: make all
       make: 
-        chdir: /opt/git-2.29.2
+        chdir: /usr/local/src/git-2.29.2
         target: all
-        params:
-          prefix: /usr/bin
+      become: yes
+
     - name: make install
       make: 
-        chdir: /opt/git-2.29.2
+        chdir: /usr/local/src/git-2.29.2
         target: install
         params:
-          prefix: /usr/bin
+      become: yes
+    - name: symbolic link
+      file:
+        src: /usr/local/src/git-2.29.2/git
+        dest: /bin/git
+        owner: root
+        group: root
+        state: link
