@@ -72,7 +72,12 @@
   file: 
     path: /var/www/html/"{{ item }}"
     state: directory
-  loop: "{{ list_of_directory }}"
+  with_items:
+    -  "{{ list_of_directory[1] }}"
+    -  "{{ list_of_directory[2] }}"
+    -  "{{ list_of_directory[3] }}"
+    -  "{{ list_of_directory[4] }}"
+    -  "{{ list_of_directory[5] }}"
 
 ## laravelの新規プロジェクト作成
 - name: create laravel-project
@@ -80,7 +85,12 @@
   args:
     chdir: /var/www/html/dev
     creates: /var/www/html/"{{ item }}"/web
-  loop: "{{ list_of_directory }}"
+  with_items:
+    -  "{{ list_of_directory[1] }}"
+    -  "{{ list_of_directory[2] }}"
+    -  "{{ list_of_directory[3] }}"
+    -  "{{ list_of_directory[4] }}"
+    -  "{{ list_of_directory[5] }}"
 
 ## ディレクトリの権限を変更
 - name: change permission
@@ -89,4 +99,9 @@
     state: directory
     mode: 0777
     recurse: yes
-  loop: "{{ list_of_directory }}"
+  with_items:
+    -  "{{ list_of_directory[1] }}"
+    -  "{{ list_of_directory[2] }}"
+    -  "{{ list_of_directory[3] }}"
+    -  "{{ list_of_directory[4] }}"
+    -  "{{ list_of_directory[5] }}"
