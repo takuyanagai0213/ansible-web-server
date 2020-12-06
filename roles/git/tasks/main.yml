@@ -1,3 +1,36 @@
 ## gitをインストール
-- name: install git
-  yum: name=git state=installed
+- hosts: localhost
+  user: root
+  become: yes
+  tasks:
+    - name: yum install dependences
+      yum: name={{ item }} 
+      with_items:
+        - gcc 
+        - curl-devel 
+        - expat-devel
+        - gettext-devel 
+        - openssl-devel
+        - zlib-devel
+        - perl-ExtUtils-MakeMaker
+        - autoconf
+
+    - name: download git latest
+      get_url: url=https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.29.2.tar.gz dest=/opt/git-2.29.2.tar.gz
+
+    - name: untar git-latest.tar.gz
+      command: tar -xzf /opt/git-2.29.2.tar.gz -C /opt
+      become: yes
+
+    - name: make all
+      make: 
+        chdir: /opt/git-2.29.2
+        target: all
+        params:
+          prefix: /usr/bin
+    - name: make install
+      make: 
+        chdir: /opt/git-2.29.2
+        target: install
+        params:
+          prefix: /usr/bin
