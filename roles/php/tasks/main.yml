@@ -70,7 +70,7 @@
 ## ディレクトリを作成
 - name: mkdir {{ list_of_directory }}
   file: 
-    path: /var/www/html/"{{ item }}"
+    path: /var/www/html/{{ item }}
     state: directory
   with_items:
     -  "{{ list_of_directory[1] }}"
@@ -83,8 +83,8 @@
 - name: create laravel-project
   shell: /usr/local/bin/composer create-project "laravel/laravel=5.6.*" web
   args:
-    chdir: /var/www/html/dev
-    creates: /var/www/html/"{{ item }}"/web
+    chdir: /var/www/html/{{ item }}
+    creates: /var/www/html/{{ item }}/web
   with_items:
     -  "{{ list_of_directory[1] }}"
     -  "{{ list_of_directory[2] }}"
