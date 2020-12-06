@@ -1,3 +1,7 @@
+- name: remove old git-version
+  yum: git
+  state: absent
+
 - name: yum install dependences
   yum: name={{ item }} 
   with_items:
