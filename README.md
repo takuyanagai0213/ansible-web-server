@@ -28,11 +28,11 @@ ansible-playbook main.yml
 ```
 ## 実行内容
 laravelのHello Worldまで行います。<br>
-`git` インストール<br>
-`php` のセットアップ<br>
+`git(latest)` インストール<br>
+`php(7.3)` のセットアップ<br>
 `php-fpm` のセットアップ<br>
 `composer` のインストール<br>
-`laravel` の新規プロジェクト作成<br>
+`laravel(5.6)` の新規プロジェクト作成<br>
 `nginx` セットアップ<br>
 
 # 各環境で書き換えが必要なところ
