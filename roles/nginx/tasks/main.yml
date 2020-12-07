@@ -1,10 +1,11 @@
 ## デフォルトのnginxはバージョンが古いのでrepoを追加
- - name: Install NGINX.
-     yum: name={{item}}
-     with_items:
-        - http://nginx.org/packages/centos/7/$basearch/
+- name: add nginx.repo
+  yum: name={{item}}
+  with_items:
+    - http://nginx.org/packages/centos/7/$basearch/
 
-- replace: dest=/etc/yum.repos.d/nginx.repo regexp="enabled *= *1" replace="enabled=0"
+- name: changh setting nginx.repo 
+  replace: dest=/etc/yum.repos.d/nginx.repo regexp="enabled *= *1" replace="enabled=0"
 
 ## nginxインストール
 - name: yum install nginx
