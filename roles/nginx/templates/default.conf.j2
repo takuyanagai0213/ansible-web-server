@@ -22,8 +22,8 @@ server {
     }
 
     #listen 80;
-    # listen 443 ssl; # managed by Certbot
-    # ssl_certificate /etc/letsencrypt/live/{{ host.domain }}/fullchain.pem; # managed by Certbot
-    # ssl_certificate_key /etc/letsencrypt/live/{{ host.domain }}/privkey.pem; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/{{ host.domain }}/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/{{ host.domain }}/privkey.pem; # managed by Certbot
 }
 {% endfor %}
