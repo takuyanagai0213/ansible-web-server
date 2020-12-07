@@ -68,40 +68,28 @@
     - /usr/local/bin/composer global require laravel/installer
 
 ## ディレクトリを作成
-- name: mkdir {{ list_of_directory }}
+- name: mkdir {{ item.directory }}
   file: 
-    path: /var/www/html/{{ item }}
+    path: /var/www/html/{{ item.directory }}
     state: directory
   with_items:
-    -  "{{ list_of_directory[1] }}"
-    -  "{{ list_of_directory[2] }}"
-    -  "{{ list_of_directory[3] }}"
-    -  "{{ list_of_directory[4] }}"
-    -  "{{ list_of_directory[5] }}"
+    -  "{{ hosts }}"
 
 ## laravelの新規プロジェクト作成
 - name: create laravel-project
   shell: /usr/local/bin/composer create-project "laravel/laravel=5.6.*" web
   args:
-    chdir: /var/www/html/{{ item }}
-    creates: /var/www/html/{{ item }}/web
+    chdir: /var/www/html/{{ item.directory }}
+    creates: /var/www/html/{{ item.directory }}/web
   with_items:
-    -  "{{ list_of_directory[1] }}"
-    -  "{{ list_of_directory[2] }}"
-    -  "{{ list_of_directory[3] }}"
-    -  "{{ list_of_directory[4] }}"
-    -  "{{ list_of_directory[5] }}"
+    -  "{{ hosts }}"
 
 ## ディレクトリの権限を変更
 - name: change permission
   file:
-    path: /var/www/html/{{ item }}
+    path: /var/www/html/{{ item.directory }}
     state: directory
     mode: 0777
     recurse: yes
   with_items:
-    -  "{{ list_of_directory[1] }}"
-    -  "{{ list_of_directory[2] }}"
-    -  "{{ list_of_directory[3] }}"
-    -  "{{ list_of_directory[4] }}"
-    -  "{{ list_of_directory[5] }}"
+    -  "{{ hosts }}"
