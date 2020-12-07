@@ -49,5 +49,7 @@ hosts:
   - { domain: example.com, server_name: example.com, root_path: "/var/www/html/dev03/web/public", directory: dev03}
   - { domain: example.com, server_name: example.com, root_path: "/var/www/html/dev04/web/public", directory: dev04}
   - { domain: example.com, server_name: example.com, root_path: "/var/www/html/dev05/web/public", directory: dev05}
-
+  :
+  :
+  :
 ```
