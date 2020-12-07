@@ -38,7 +38,7 @@ laravelのHello Worldまで行います。<br>
 # 各環境で書き換えが必要なところ
 下記のファイルの環境変数のみansible-playbookコマンドを叩く前に修正が必要<br>
 `./roles/vars/variables.yml`<br>
-バーチャルホストを５つまで設定できるようにしてある。
+バーチャルホストは、 `./roles/vars/variables.yml` に登録されているhostの数に応じて自動で設定される。
 
 ```
 # nginxのdefault.confの各設定に適用される
