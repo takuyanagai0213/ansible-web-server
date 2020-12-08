@@ -29,4 +29,3 @@
     chdir: /usr/local/src/git-2.29.2
     prefix: /usr/local
     target: install
-    params:
