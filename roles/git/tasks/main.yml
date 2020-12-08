@@ -20,12 +20,14 @@
 - name: make all
   make: 
     chdir: /usr/local/src/git-2.29.2
-    prefix: /usr/local
+    params:
+      prefix: /usr/local
     target: all
   become: yes
 
 - name: make install
   make: 
     chdir: /usr/local/src/git-2.29.2
-    prefix: /usr/local
+    params:
+      prefix: /usr/local
     target: install

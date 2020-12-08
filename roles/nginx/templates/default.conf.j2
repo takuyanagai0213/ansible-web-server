@@ -1,7 +1,7 @@
 {% for host in hosts %}
 server {
     server_name  {{ host.server_name }};
-    root {{ root_path[1] }};
+    root {{ host.root_path }};
     access_log /var/log/nginx/{{ host.directory }}_access.log main;
     error_log /var/log/nginx/{{ host.directory }}_error.log warn;
 
@@ -21,9 +21,9 @@ server {
         root   /usr/share/nginx/html;
     }
 
-    #listen 80;
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/{{ host.domain }}/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/{{ host.domain }}/privkey.pem; # managed by Certbot
+#    #listen 80;
+#    listen 443 ssl; # managed by Certbot
+#    ssl_certificate /etc/letsencrypt/live/{{ host.domain }}/fullchain.pem; # managed by Certbot
+#    ssl_certificate_key /etc/letsencrypt/live/{{ host.domain }}/privkey.pem; # managed by Certbot
 }
 {% endfor %}
