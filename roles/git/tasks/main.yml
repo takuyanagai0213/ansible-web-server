@@ -3,7 +3,7 @@
   state: absent
 
 - name: yum install dependences
-  yum: name={{ item }} 
+  yum: name={{ item }}
   with_items:
     - gcc 
     - curl-devel 
