@@ -1,9 +1,5 @@
-- name: remove old git-version
-  yum: git
-  state: absent
-
 - name: yum install dependences
-  yum: name={{ item }} 
+  yum: name={{ item }}
   with_items:
     - gcc 
     - curl-devel 
@@ -24,19 +20,14 @@
 - name: make all
   make: 
     chdir: /usr/local/src/git-2.29.2
+    params:
+      prefix: /usr/local
     target: all
   become: yes
 
 - name: make install
   make: 
     chdir: /usr/local/src/git-2.29.2
-    target: install
     params:
-  become: yes
-- name: symbolic link
-  file:
-    src: /usr/local/src/git-2.29.2/git
-    dest: /bin/git
-    owner: root
-    group: root
-    state: link
+      prefix: /usr/local
+    target: install

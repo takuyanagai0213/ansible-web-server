@@ -1,0 +1,29 @@
+## 必要なパッケージをインストール
+- name: install python-simplejson
+  yum:
+    name: {{ item }}
+  with_item:
+    - python-simplejson 
+    - openssl
+  state: present
+
+## letencrptをインストール
+- name: install letsencrypt
+  yum:
+    name: letsencrypt
+    state: present
+
+## ssl証明書が存在するかチェック
+- name: check letsencrypt folder
+  stat:
+    path: "/etc/letsencrypt/live/{{ host.domain }}"
+  register: letsencrypt
+  with_items:
+  -  "{{ hosts }}"
+
+## hostの数だけssl証明書を取得
+- name: Create SSL/TLS certificates
+  shell: "letsencrypt certonly --webroot -w {{ host.root_path }} -d {{ host.server_name }} --email {{ ssl_email }} --agree-tos --keep-until-expiring --non-interactive --debug"
+  when: not letsencrypt.stat.exists
+  with_items:
+    -  "{{ hosts }}"
