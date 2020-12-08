@@ -33,8 +33,8 @@
     yum: 
     name: git
     state: absent
-
   become: yes
+
 - name: symbolic link
   file:
     src: /usr/local/src/git-2.29.2/git
@@ -42,3 +42,4 @@
     owner: root
     group: root
     state: link
+  become: yes
