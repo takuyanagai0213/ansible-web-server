@@ -20,26 +20,13 @@
 - name: make all
   make: 
     chdir: /usr/local/src/git-2.29.2
+    prefix: /usr/local
     target: all
   become: yes
 
 - name: make install
   make: 
     chdir: /usr/local/src/git-2.29.2
+    prefix: /usr/local
     target: install
     params:
-
-- name: remove old git-version
-    yum: 
-    name: git
-    state: absent
-  become: yes
-
-- name: symbolic link
-  file:
-    src: /usr/local/src/git-2.29.2/git
-    dest: /bin/git
-    owner: root
-    group: root
-    state: link
-  become: yes
