@@ -35,6 +35,8 @@ laravelのHello Worldまで行います。<br>
 `laravel(5.6)` の新規プロジェクト作成<br>
 `letsencrypt` でssl証明書の取得<br>
 `nginx` セットアップ<br>
+`firewalld` にhttpとhttpsの設定を追加<br>
+`SELinux` を無効化
 
 # 各環境で書き換えが必要なところ
 下記のファイルの環境変数のみansible-playbookコマンドを叩く前に修正が必要<br>
