@@ -21,7 +21,7 @@ localhostで実行する時はgitをインストール
 
 ```
 # リポジトリをクローン
-git clone ssh://git@165.76.148.171:8890/InfrastructureAsCode/ansible-project.git
+git clone git@github.com:takuyanagai0213/ansible-web-server.git
 # 下記コマンドを実行すると、ジョブが開始される。
 cd ansible-project
 ansible-playbook main.yml
